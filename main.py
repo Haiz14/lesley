@@ -36,7 +36,20 @@ class DirectoryPurifierGUI:
         self.directory_name.set(filedialog.askdirectory())
 
     def start_purifying(self):
-        directory_purifier(self.directory_name.get(), self.chars_to_remove.get(), self.dry_run.get())
+        output = directory_purifier(self.directory_name.get(), self.chars_to_remove.get(), self.dry_run.get())
+        self.show_output(output)
+
+    def show_output(self, output):
+        # Create a new window to display the output
+        output_window = tk.Toplevel(self.window)
+        output_window.title("Purifier Output")
+
+        # Add a text widget to display the output
+        output_text = tk.Text(output_window)
+        output_text.pack(fill="both", expand=True)
+
+        # Insert the output into the text widget
+        output_text.insert("end", output)
 
     def run(self):
         self.window.mainloop()
