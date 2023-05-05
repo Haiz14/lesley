@@ -1,0 +1,6 @@
+- add no to files based on file recency
+  - scriot
+	- gui
+- remove parts of names from files
+  - script
+	- gui
