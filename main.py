@@ -44,8 +44,12 @@ class DirectoryPurifierGUI:
         self.show_logs(output)
 
     def show_logs(self, output):
-        # Add the output to the logs text widget
-        self.logs_text.insert("end", output + "\n")
+        # Clear the logs text widget
+        self.logs_text.delete(1.0, "end")
+
+        # Iterate through the list of tuples and display the old and new file names
+        for old_name, new_name in output:
+            self.logs_text.insert("end", f"{old_name} -> {new_name}\n")
 
     def run(self):
         self.window.mainloop()
