@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 
-from functions import directory_purifier
+from functions import directory_purifier, directory_files_renamed_sequentially_by_last_edit
 
 
 class DirectoryPurifierGUI:
