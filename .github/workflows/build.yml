@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: current directory info
+        run: python -c "import os; print(os.getcwd(), os.listdir(os.getcwd()))"
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Build application
+        run: pyinstaller --onefile --noconsole main.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.os }}-executable
+          path: dist/*
+
