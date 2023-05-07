@@ -24,6 +24,9 @@ class DirectoryPurifierGUI:
         self.directory_label.pack(side="left")
         self.directory_button = tk.Button(self.top_frame, text="Browse", command=self.browse_directory)
         self.directory_button.pack(side="left")
+        # display selected directory
+        self.directory_name_label = tk.Label(self.top_frame, textvariable=self.directory_name)
+        self.directory_name_label.pack(side="left", padx=(15,0))
 
         # Bottom section: logs of what happened
         self.logs_text = tk.Text(self.bottom_frame)
