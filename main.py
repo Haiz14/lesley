@@ -14,9 +14,9 @@ class DirectoryPurifierGUI:
         self.middle_frame = tk.Frame(self.window)
         self.bottom_frame = tk.Frame(self.window)
 
-        self.top_frame.pack(side="top", fill="x")
-        self.middle_frame.pack(fill="both", expand=True)
-        self.bottom_frame.pack(side="bottom", fill="x")
+        self.top_frame.pack(side="top", fill="x", pady=5)
+        self.middle_frame.pack(fill="both", expand=True, pady=5)
+        self.bottom_frame.pack(side="bottom", fill="x", pady=5)
 
         # Top section: big select directory button with directory selected text
         self.directory_name = tk.StringVar(value="")
